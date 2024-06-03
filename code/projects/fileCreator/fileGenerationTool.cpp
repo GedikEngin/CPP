@@ -74,18 +74,17 @@ void createFromExistingList()
     std::string fileText;
     std::string targetFolder;
 
-    std::cout << "What is the file name containing the list of files to create? \n";
-    std::cout << "Example: fileNameList.txt \n";
+    std::cout << "What is the file name containing the list of files to create? (e.g. filesToGenerateList.txt): \n";
     std::getline(std::cin, existingFile);
 
     std::ifstream fileReader(existingFile);
     if (!fileReader.is_open())
     {
-        std::cerr << "Error accessing file. \n";
+        std::cerr << "\nError accessing file. \n";
         return;
     }
 
-    std::cout << "Enter the name of the folder for output:\n";
+    std::cout << "\nEnter the name of the folder for output:\n";
     std::getline(std::cin, folderName);
 
     std::filesystem::path folderPath(folderName);
@@ -94,17 +93,17 @@ void createFromExistingList()
     {
         // Create the directory if it doesn't exist
         std::filesystem::create_directory(folderPath);
-        std::cout << "Directory created successfully. \n";
+        std::cout << "\nDirectory created successfully. \n";
     }
     catch (const std::filesystem::filesystem_error &e)
     {
-        std::cerr << "Error creating directory: " << e.what() << std::endl;
+        std::cerr << "\nError creating directory: " << e.what() << std::endl;
         return;
     }
 
     targetFolder = "./" + folderName + "/";
 
-    std::cout << "Enter the file extension (e.g., .cpp): ";
+    std::cout << "\nEnter the file extension (e.g., .cpp): ";
     std::getline(std::cin, fileExtension);
 
     std::cout << "\nFile creation starting..\n\n";
@@ -128,26 +127,26 @@ void createNewFileList()
 
     std::ofstream createAppendFile("filesToGenerateList.txt", std::ios::app);
 
-    std::cout << "How many files will you be generating?: \n";
+    std::cout << "\nHow many files will you be generating?: \n";
     std::cout << "Example: 12 \n";
 
     std::getline(std::cin, numberOfFilesStr);
 
     int numberOfFiles = stoi(numberOfFilesStr);
 
-    std::cout << "Input the name of the file to generate? \n";
+    std::cout << "\nInput the name of the file to generate? \n";
     std::cout << "Example: bubbleSearch\n";
 
     for (int i = 0; i < numberOfFiles; i++)
     {
-        std::cout << "name of file number" << i + 1 << ": ";
+        std::cout << "Name of the file number " << i + 1 << ": ";
         std::getline(std::cin, fileNames);
         createAppendFile << fileNames << std::endl;
     }
 
     createAppendFile.close();
 
-    std::cout << "File list created, please select file to open from menu. \n";
+    std::cout << "\nFile list created, please select file to open from menu. \n";
 
     int userInput = userChoice(); // Get user choice again after creating file list
 
