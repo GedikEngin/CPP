@@ -379,6 +379,81 @@ int main(){
 }
 ```
 
+#### Passing arrays to functions
+
+```cpp
+#include <iostream>
+
+double getTotal(double prices[], int size); // function declaration
+
+
+int main(){
+    double prices[] = {49.99, 15.05, 70, 400, 8.99}; // initializing the double list
+    int size = sizeof(prices)/sizeof(prices[0]); // calculating the size of the array
+    double total = getTotal(prices, size); // calling getTotal func to calculate the total
+
+    std::cout << "£" << total; // c output
+
+    return 0;
+}
+
+double getTotal(double prices[], int size){
+
+    double total = 0; // local total var
+
+    for (int i = 0; i < size; ++i){ // loop iteration
+        total += prices[i]; // concatenates the prices
+    }
+
+    return total; // returns total val
+}
+
+```
+
+#### searching array for an element
+
+```cpp
+
+#include <iostream>
+
+int searchArray(int array[], int size, int numberToSearch);
+
+int main()
+{
+    int numbers[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    int size = sizeof(numbers/sizeof(numbers[0]));
+
+    int searchIndex;
+    int numberToSearch;
+
+    std::cout << "enter Element to search for: " << "\n";
+    std::cin >> numberToSearch;
+
+    index = searchArray(numbers, size, numberToSearch);
+
+    if (numbers[index] == numberToSearch){
+        std::cout << "Element found at index: " << index << "\n"; // <<
+    }
+    else if(index == -1){
+        std::cout << "Element not found";
+    }
+
+    cout << "Element found at index: " << index;
+
+    return 0
+}
+
+int searchArray(int array[], int size, int numberToSearch){ // linear search method
+
+    for(int i = 0; i < size; i++){
+    if (array[i] == numberToSearch){
+        return i;
+        }
+    }
+    return -1; // in programming -1 is used to indicate that an element was not found, it is a sentinel value
+}
+```
+
 #
 
 ## How C++ Works - The Cherno
