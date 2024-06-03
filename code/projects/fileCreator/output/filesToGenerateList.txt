@@ -10,3 +10,6 @@ file2
 file3
 file4
 file5
+alpha
+beta
+charlie

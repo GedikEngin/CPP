@@ -149,5 +149,15 @@ void createNewFileList()
 
     std::cout << "File list created, please select file to open from menu. \n";
 
-    userChoice();
+    int userInput = userChoice(); // Get user choice again after creating file list
+
+    // Handle user choice
+    if (userInput == 0)
+    {
+        createFromExistingList();
+    }
+    else if (userInput == 1)
+    {
+        createNewFileList(); // Recursively call createNewFileList to continue the loop
+    }
 };
