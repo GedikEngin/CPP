@@ -72,6 +72,7 @@ void createFromExistingList()
     std::string folderName;
     std::string fileExtension;
     std::string fileText;
+    std::string targetFolder;
 
     std::cout << "What is the file name containing the list of files to create? \n";
     std::cout << "Example: fileNameList.txt \n";
@@ -87,9 +88,6 @@ void createFromExistingList()
     std::cout << "Enter the name of the folder for output:\n";
     std::getline(std::cin, folderName);
 
-    std::cout << "Enter the file extension (e.g., .cpp): ";
-    std::getline(std::cin, fileExtension);
-
     std::filesystem::path folderPath(folderName);
 
     try
@@ -104,12 +102,17 @@ void createFromExistingList()
         return;
     }
 
+    targetFolder = "./" + folderName + "/";
+
+    std::cout << "Enter the file extension (e.g., .cpp): ";
+    std::getline(std::cin, fileExtension);
+
     std::cout << "\nFile creation starting..\n\n";
 
     while (getline(fileReader, fileText))
     {
         std::cout << fileText << '\n';
-        std::ofstream fileCreator(fileText + fileExtension);
+        std::ofstream fileCreator(targetFolder + fileText + fileExtension);
         fileCreator.close();
     }
 
