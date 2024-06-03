@@ -454,6 +454,51 @@ int searchArray(int array[], int size, int numberToSearch){ // linear search met
 }
 ```
 
+another example:
+
+```cpp
+#include<iostream>
+
+int searchArray(std::string array[], int size, std::string element);
+
+int main()
+{
+    std::string foods[] = {"pizza", "hamburger", "hotdog"};
+    int size = sizeof(foods)/sizeof(foods[0]);
+    int index;
+    std::string myFood;
+
+    std::cout << "Enter element to search for: " << '\n';
+    std::getline(std::cin, myFood);
+
+    index = searchArray(foods, size, myFood);
+
+    if(index != -1){
+        std::cout << myFood << " is at index " << index;
+    }
+    else{
+        std::cout << myFood << " is not in the array";
+    }
+
+    return 0;
+}
+int searchArray(std::string array[], int size, std::string element){
+
+    for(int i = 0; i < size; i++){
+        if(array[i] == element){
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+#### Sorting an array
+
+```cpp
+
+```
+
 #
 
 ## How C++ Works - The Cherno
@@ -478,3 +523,36 @@ Every symbol in C++ needs to be defined.
 When working with multiple files, it is important to link (linker) the files together, otherwise the compiler/C++ blindly "trusts" the code.
 
 src: https://www.youtube.com/watch?v=SfGuIVzE_Os
+
+## Solo learning
+
+#### file manipulation cpp
+
+```cpp
+
+#include <fstream> // file stream lib, contains both ofstream and ifstream, used to create&write and read files respectively
+
+```
+
+#### searching an array
+
+need to include algorithm header:
+
+```cpp
+
+#include <algorithm>
+
+int main(){
+
+    // std::find; // used to search for the first appearance of an element within a given array within a specified range
+    auto it = std::find(begin(numbers), end(numbers), numberToSearch);
+    // it is an abbreviation for iterator,
+    // auto allows the compiler to determine the data type on its own based on what is passed through
+    // std::begin(numbers) // the start of the range to search
+    // std::end(numbers) // end of the range to search
+    // numberToSearch // the number to look for within the given range of the array
+
+
+}
+
+```
