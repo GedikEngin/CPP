@@ -44,3 +44,17 @@ int main()
     std::cout << sentence << std::endl;
     return 0;
 }
+
+/*
+alternative solution from community
+
+std::string smash( const std::vector< std::string >& words ) { // starts the function the same way
+  if ( words.empty() ) return {}; // checks if words is empty, returns empty string type back
+
+  std::string sentence; // inits a string var
+
+  for ( const auto& word : words ) sentence += word + ' '; // iterates through words and adds them to sentence with white space
+
+  return sentence.pop_back(), sentence; // pops the last white space and returns sentence
+}
+*/
